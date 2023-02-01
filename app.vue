@@ -12,4 +12,10 @@ a{text-decoration: none;}
 	margin: 0;
 	box-sizing: border-box;
 	font-family: "Inter";}
+
+@media (min-width: 1000px) {
+	main{
+		margin: 0 30vw;
+	}
+}
 </style>
