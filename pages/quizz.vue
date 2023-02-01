@@ -1,8 +1,12 @@
 <template>
     <main>
-        <header>
-            <Navigation />
-            <h1 class="title">Quizz</h1>
-        </header>
+        <Navigation titre="Quizz" />
+        <section class="login">
+            
+        </section>
     </main>
 </template>
+
+<script setup>
+    const authentificated = ref(false)
+</script>

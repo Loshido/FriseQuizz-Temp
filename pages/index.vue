@@ -1,9 +1,6 @@
 <template>
     <main>
-        <header>
-            <Navigation />
-            <h1 class="title">Bienvenue</h1>
-        </header>
+        <Navigation titre="Bienvenue" description="Vous retrouverez sur cette page, une frise chronologique des événements qui ont contribué à l'<u>amitié</u> entre la France 🇫🇷 et l'Allemagne 🇩🇪" />
         <NuxtLink to="/quizz">
             <section id="quizz-button" class="module">
                 <h1>
@@ -12,14 +9,15 @@
                 <p>Testez vos connaissances!</p>
             </section>
         </NuxtLink>
+        <Frise :sections="frise" />
     </main>
 </template>
 
+<script setup>
+import frise from "@/assets/frise.json"
+</script>
+
 <style>
-main > header > h1.title{
-    color: rgb(55, 55, 55);
-    font-size: 2.25em;
-    margin: 20px 25px;}
 section.module{
     background-color: rgba(0,0,0,0.1);
     border-radius: 5px;
