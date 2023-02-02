@@ -25,7 +25,17 @@ const submit = async () => {
         username: username.value,
         points: 0, parties: 0,
         isPlaying: false, tx_reussite: 0
-    }).then(() => {
+    }).then(({error}) => {
+        if(error == null || error == undefined){
+            fetch("https://ntfy.sh", {
+                method: "POST",
+                body: JSON.stringify({
+                    "topic": "lsh_de_register",
+                    "message": `A new player registered as ${username.value}`,
+                    "title": "New Registration on DE_QUIZZ project"
+                })
+            })
+        }
         user.value = username
         router.push("/game")
     })
