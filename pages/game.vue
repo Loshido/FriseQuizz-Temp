@@ -3,7 +3,7 @@
         <p>Vous êtes connectez en tant que {{ user }}</p>
         <p>Partie en développement, j'ai pas pu finir...</p>
 
-        <pre v-if="data">{{ data[0] }}</pre>
+        <pre v-if="data[0]">{{ data[0] }}</pre>
 
         <NuxtLink to="/">Accueil</NuxtLink>
     </div>
