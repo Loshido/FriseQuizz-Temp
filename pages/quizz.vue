@@ -16,6 +16,7 @@ const username = ref("")
 const logs = ref("")
 const user = useState("user", () => false)
 const router = useRouter()
+const env = useRuntimeConfig()
 
 const submit = async () => {
     if(username == "") return // pas de pseudo 
@@ -30,7 +31,7 @@ const submit = async () => {
             fetch("https://ntfy.sh", {
                 method: "POST",
                 body: JSON.stringify({
-                    "topic": "lsh_de_register",
+                    "topic": env.NTFYKEY,
                     "message": `A new player registered as ${username.value}`,
                     "title": "New Registration on DE_QUIZZ project"
                 })
