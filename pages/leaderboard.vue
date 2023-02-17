@@ -1,37 +1,41 @@
 <template>
     <main>
         <Navigation titre="Leaderboard" />
-        <div class="legende">
-            <span></span>
-            <svg viewBox="0 0 24 24" width="24" height="24">
-                <path
-                    d="M1.327,12.4,4.887,15,3.535,19.187A3.178,3.178,0,0,0,4.719,22.8a3.177,3.177,0,0,0,3.8-.019L12,20.219l3.482,2.559a3.227,3.227,0,0,0,4.983-3.591L19.113,15l3.56-2.6a3.227,3.227,0,0,0-1.9-5.832H16.4L15.073,2.432a3.227,3.227,0,0,0-6.146,0L7.6,6.568H3.231a3.227,3.227,0,0,0-1.9,5.832Z" />
-            </svg>
-            <svg viewBox="0 0 513.806 513.806" width="24" height="24">
-                <path
-                    d="M66.074,228.731C81.577,123.379,179.549,50.542,284.901,66.045c35.944,5.289,69.662,20.626,97.27,44.244l-24.853,24.853   c-8.33,8.332-8.328,21.84,0.005,30.17c3.999,3.998,9.423,6.245,15.078,6.246h97.835c11.782,0,21.333-9.551,21.333-21.333V52.39   c-0.003-11.782-9.556-21.331-21.338-21.329c-5.655,0.001-11.079,2.248-15.078,6.246L427.418,65.04   C321.658-29.235,159.497-19.925,65.222,85.835c-33.399,37.467-55.073,83.909-62.337,133.573   c-2.864,17.607,9.087,34.202,26.693,37.066c1.586,0.258,3.188,0.397,4.795,0.417C50.481,256.717,64.002,244.706,66.074,228.731z" />
-                <path
-                    d="M479.429,256.891c-16.108,0.174-29.629,12.185-31.701,28.16C432.225,390.403,334.253,463.24,228.901,447.738   c-35.944-5.289-69.662-20.626-97.27-44.244l24.853-24.853c8.33-8.332,8.328-21.84-0.005-30.17   c-3.999-3.998-9.423-6.245-15.078-6.246H43.568c-11.782,0-21.333,9.551-21.333,21.333v97.835   c0.003,11.782,9.556,21.331,21.338,21.329c5.655-0.001,11.079-2.248,15.078-6.246l27.733-27.733   c105.735,94.285,267.884,85.004,362.17-20.732c33.417-37.475,55.101-83.933,62.363-133.615   c2.876-17.605-9.064-34.208-26.668-37.084C482.655,257.051,481.044,256.91,479.429,256.891z" />
-            </svg>
-            <svg viewBox="0 0 24 24" width="24" height="24">
-                <path
-                    d="M15.477,18.61c0-1.283-.808-2.029-2.357-3.344-.35-.3-.728-.618-1.118-.972-.445.409-.868.769-1.256,1.1C9.2,16.7,8.523,17.339,8.523,18.61a3.477,3.477,0,0,0,6.954,0Z" />
-                <path
-                    d="M16.408,4.035c-1.2-1.019-2.44-2.072-3.694-3.325L12,0,11.3.711c-2.254,2.262-3.32,5.736-3.782,7.82a6.04,6.04,0,0,1-.779-1.785L6.312,5.109,5.079,6.266c-2.159,2.028-3.6,4.039-3.6,7.259a10.422,10.422,0,0,0,7.8,10.18A11.153,11.153,0,0,0,11,24a5.491,5.491,0,0,1-4.485-5.39c0-2.25,1.357-3.4,2.928-4.742.561-.477,1.2-1.018,1.845-1.667L12,11.493l.708.708c.576.576,1.152,1.064,1.709,1.538,1.576,1.337,3.064,2.6,3.064,4.871a5.489,5.489,0,0,1-4.456,5.384A10.51,10.51,0,0,0,22.52,13.527C22.52,9.225,19.687,6.82,16.408,4.035Z" />
-            </svg>
-        </div>
-        <div class="joueurs">
-            <div class="joueur" v-for="joueur in data">
-                <h1 v-text="joueur.username" />
-                <h2 v-text="joueur.points" />
-                <h2 v-text="joueur.parties" />
-                <h2 v-text="`${joueur.tx_reussite}%`" />
-            </div>
-        </div>
+        <span v-if="sortMethod != undefined">trie par {{ sortMethod }}.</span>
+        <table v-if="data">
+            <thead>
+                <tr>
+                    <th @click="data = sortMethods(data, 'username')" class="username">Pseudo</th>
+                    <th @click="data = sortMethods(data, 'points')" class="pts">Points</th>
+                    <th @click="data = sortMethods(data, 'parties')" class="prt">Parties</th>
+                    <th @click="data = sortMethods(data, 'tx_reussite')" class="trs"> % réussite</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="user in data">
+                    <td class="username" v-text="user.username" />
+                    <td class="pts" v-text="user.points" />
+                    <td class="prt" v-text="user.parties" />
+                    <td class="trs" v-text="user.tx_reussite" />
+                </tr>
+            </tbody>
+        </table>
     </main>
 </template>
 
 <script setup>
+const methods = {
+    username: "ordre alphabetique",
+    points: "points",
+    parties: "parties",
+    tx_reussite: "taux de réussite"
+}
+const sortMethod = ref(undefined)
+const sortMethods = (array, params) => {
+    sortMethod.value = methods[params]
+    if(params == "username") return array.sort((a, b) => a.username.toLowerCase() < b.username.toLowerCase() ? -1 : 1)
+    return array.sort((a, b) => a[params] > b[params] ? -1 : 1)
+}
 const client = useSupabaseClient()
 const { data } = await useAsyncData(async () => {
     const { data, error } = await client.from("Quizz").select()
@@ -40,30 +44,23 @@ const { data } = await useAsyncData(async () => {
 })
 </script>
 
-<style>
-div.legende{
-    margin: 0 15px;
-    display: grid;
-    grid-template-columns: 60% 12% 12% 12%;
-    align-items: center;
-    justify-items: center;}
-div.legende > svg > path{fill: rgba(55, 55, 55, 0.75);}
-
-div.joueurs{
-    display: flex;
-    flex-direction: column;
-    margin: 15px;
-    margin-top: 10px;
-    gap: 7.5px;}
-div.joueurs > div.joueur > h1{overflow: hidden;}
-div.joueurs > div.joueur{
-    padding: 7.5px 10px;
-    color: #fff;
-    background-color: rgba(55, 55, 55, 0.75);
-    border-radius: 5px;
-    display: grid;
-    gap: 1%;
-    grid-template-columns: 60% 12% 12% 12%;
-    align-items: center;
-    justify-items: center;}
+<style scoped>
+main > span{
+    margin-left: 25px;
+    font-weight: 300;
+    font-style: italic;
+}
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 25px;
+    width: 100%;}
+table th{cursor: pointer;}
+table :is(th, td){
+    padding: 10px 5px;
+    border: 1px solid;}
+table :is(td, th).username{width: 40%;}
+table :is(td, th).pts{width: 12.5%;}
+table :is(td, th).prt{width: 12.5%;}
+table :is(td, th).trs{width: 25%;}
 </style>

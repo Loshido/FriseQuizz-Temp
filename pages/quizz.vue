@@ -33,7 +33,7 @@ const submit = async () => {
                 body: JSON.stringify({
                     "topic": env.NTFYKEY,
                     "message": `A new player registered as ${username.value}`,
-                    "title": "New Registration on DE_QUIZZ project"
+                    "title": "Nouvel utilisateur enregistré sur le Quizz du site de l'amitié franco-allemande"
                 })
             })
         }

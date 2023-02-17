@@ -6,7 +6,7 @@
                 <h1>
                     Quizz
                 </h1>
-                <p>Testez vos connaissances!</p>
+                <p>Testez vos connaissances !</p>
             </section>
         </NuxtLink>
         <Frise :sections="frise" />
