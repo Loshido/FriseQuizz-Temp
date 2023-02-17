@@ -2,8 +2,10 @@
     <main>
         <Navigation titre="Quizz" />
         <form @submit.prevent="submit">
-            <label for="username">Pseudo</label>
-            <input required id="username" autofocus type="text" maxlength="20" v-model="username">
+            <div class="entree">
+                <label for="username">Pseudo</label>
+                <input required id="username" autofocus type="text" maxlength="20" v-model="username">
+            </div>
             <button type="submit">Démarrer une partie</button>
             <pre v-if="logs != ''" v-text="logs"></pre>
         </form>
@@ -19,7 +21,7 @@ const router = useRouter()
 const env = useRuntimeConfig()
 
 const submit = async () => {
-    if(username == "") return // pas de pseudo 
+    if(username.value == "") return // pas de pseudo 
     if(user.value != false) router.push("/game") // Joueur authentifié
 
     client.from("Quizz").insert({
@@ -45,7 +47,7 @@ const submit = async () => {
 
 <style>
 @media (min-width: 1000px) {
-    form > input{width: 500px !important;}
+    form > div > input{width: 500px !important;}
 }
 
 form{
@@ -55,7 +57,10 @@ form{
     width: 100%;
     height: auto;
     padding: 10px 25px;}
-form > input{
+form > div{
+    display: flex;
+    flex-direction: column;}
+form > div > input{
     z-index: 1;
     position: relative;
     margin: 5px 0;
