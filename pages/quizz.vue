@@ -23,11 +23,9 @@ const env = useRuntimeConfig()
 const submit = async () => {
     if(username.value == "") return // pas de pseudo 
     if(user.value != false) router.push("/game") // Joueur authentifié
-
     client.from("Quizz").insert({
         username: username.value,
-        points: 0, parties: 0,
-        isPlaying: false, tx_reussite: 0
+        points: 0, parties: 0, tx_reussite: 0
     }).then(({error}) => {
         if(error == null || error == undefined){
             fetch("https://ntfy.sh", {

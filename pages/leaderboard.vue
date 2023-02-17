@@ -25,7 +25,7 @@
                 <h1 v-text="joueur.username" />
                 <h2 v-text="joueur.points" />
                 <h2 v-text="joueur.parties" />
-                <h2 v-text="joueur.tx_reussite" />
+                <h2 v-text="`${joueur.tx_reussite}%`" />
             </div>
         </div>
     </main>
