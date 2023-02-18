@@ -6,7 +6,8 @@ export default defineNuxtConfig({
     ],
     runtimeConfig: {
         public: {
-            NTFYKEY: ""
+            NTFYKEY: "",
+            LocalNetwork: true // True pour travailler sans affecter la base de donnée
         }
     },
     css: [

@@ -8,38 +8,56 @@
             </div>
             <button type="submit">Démarrer une partie</button>
             <pre v-if="logs != ''" v-text="logs"></pre>
+            <audio id="click">
+                <source src="@/assets/audio/click.mp3" type="audio/mpeg">
+            </audio>
         </form>
     </main>
 </template>
 
-<script setup>
-const client = useSupabaseClient()
-const username = ref("")
-const logs = ref("")
-const user = useState("user", () => false)
-const router = useRouter()
-const env = useRuntimeConfig()
+<script>
+export default{
+    data: () => ({
+        username: "",
+        logs: ""
+    }),
+    setup(){
+        const user = useState("user", () => false)
+        return { user }
+    },
+    methods: {
+        submit: async function() {
+            const node = document.getElementById("click")
+            const env = useRuntimeConfig()
+            const router = useRouter()
+            if(this.username == "") return // pas de pseudo 
+            if(this.user != false) router.push("/game") // Joueur authentifié
 
-const submit = async () => {
-    if(username.value == "") return // pas de pseudo 
-    if(user.value != false) router.push("/game") // Joueur authentifié
-    client.from("Quizz").insert({
-        username: username.value,
-        points: 0, parties: 0, tx_reussite: 0
-    }).then(({error}) => {
-        if(error == null || error == undefined){
-            fetch("https://ntfy.sh", {
-                method: "POST",
-                body: JSON.stringify({
-                    "topic": env.NTFYKEY,
-                    "message": `A new player registered as ${username.value}`,
-                    "title": "Nouvel utilisateur enregistré sur le Quizz du site de l'amitié franco-allemande"
+            if(!env.public.LocalNetwork) {
+                const client = useSupabaseClient()
+                client.from("Quizz").insert({
+                    username: this.username,
+                    points: 0, parties: 0, tx_reussite: 0
+                }).then(({error}) => {
+                    if(error == null || error == undefined){
+                        fetch("https://ntfy.sh", {
+                            method: "POST",
+                            body: JSON.stringify({
+                                "topic": env.public.NTFYKEY,
+                                "message": `A new player registered as ${this.user}`,
+                                "title": "Nouvel utilisateur enregistré sur le Quizz du site de l'amitié franco-allemande"
+                            })
+                        })
+                    }
                 })
-            })
+            }
+            this.user = this.username
+            node.play()
+            setTimeout(() => {
+                router.push("/game")
+            }, 2000);
         }
-        user.value = username
-        router.push("/game")
-    })
+    }
 }
 </script>
 
