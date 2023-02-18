@@ -39,7 +39,7 @@ const sortMethods = (array, params) => {
 
 const client = useSupabaseClient()
 
-lient.channel('live-leaderboard-updates')
+client.channel('live-leaderboard-updates')
     .on('postgres_changes',
     { event: 'UPDATE', schema: 'public', table: 'Quizz' },
     (payload) => {
