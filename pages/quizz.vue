@@ -34,20 +34,9 @@ export default{
             if(this.user != false) router.push("/game") // Joueur authentifié
 
             if(!env.public.LocalNetwork) {
-                const client = useSupabaseClient()
-                client.from("Quizz").insert({
-                    username: this.username,
-                    points: 0, parties: 0, tx_reussite: 0
-                }).then(({error}) => {
-                    if(error == null || error == undefined){
-                        fetch("https://ntfy.sh", {
-                            method: "POST",
-                            body: JSON.stringify({
-                                "topic": env.public.NTFYKEY,
-                                "message": `A new player registered as ${this.user}`,
-                                "title": "Nouvel utilisateur enregistré sur le Quizz du site de l'amitié franco-allemande"
-                            })
-                        })
+                await useFetch("/api/auth/register", {
+                    query: {
+                        username: this.username
                     }
                 })
             }

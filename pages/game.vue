@@ -47,7 +47,7 @@ export default {
         const user = useState("user", () => false)
         const answers = ref(undefined)
         const results = ref({})
-        const { data } = await useFetch("/api/quizz")
+        const { data } = await useFetch("/api/quizz/questions")
         definePageMeta({
             middleware: ["auth"]
         })
@@ -56,7 +56,7 @@ export default {
     },
     methods: {
         submit: async function(){
-            this.answers = await useFetch("/api/quizz_answers")
+            this.answers = await useFetch("/api/quizz/answers")
             const SumFn = (total, value) => value.answer == this.answers.data[value.id].answer ? total + 1 : total
             const correct = this.data.reduce(SumFn, 0)
             this.results.correct = correct
@@ -65,17 +65,13 @@ export default {
             else this.playError()
 
             if(!useRuntimeConfig().public.LocalNetwork) {
-                const supabase = useSupabaseClient()
-                const { data: records } = await supabase.from("Quizz").select('*').eq("username", this.user)
-                if(records) {
-                    const tx_reussite = ((records[0].points + correct) / ((records[0].parties + 1) * this.data.length)) * 100
-                    const request = await supabase.from("Quizz").update({
-                        parties: records[0].parties + 1,
-                        points: records[0].points + correct,
-                        tx_reussite: Math.floor(tx_reussite)
-                    }).eq("username", this.user)
-                    console.log(request)
-                }
+                await useFetch("/api/auth/update", {
+                    query: {
+                        username: this.user,
+                        length: this.data.length,
+                        correct: correct
+                    }
+                })
             }
         },
         playError(){
@@ -175,6 +171,4 @@ form > section p{
     font-size: 1.5em;
     font-weight: 600;}
 pre{margin: 25px;}
-
-
 </style>

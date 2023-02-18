@@ -36,12 +36,20 @@ const sortMethods = (array, params) => {
     if(params == "username") return array.sort((a, b) => a.username.toLowerCase() < b.username.toLowerCase() ? -1 : 1)
     return array.sort((a, b) => a[params] > b[params] ? -1 : 1)
 }
+
 const client = useSupabaseClient()
-const { data } = await useAsyncData(async () => {
-    const { data, error } = await client.from("Quizz").select()
-    if(error) throw error
-    return data
-})
+
+lient.channel('live-leaderboard-updates')
+    .on('postgres_changes',
+    { event: 'UPDATE', schema: 'public', table: 'Quizz' },
+    (payload) => {
+        const index = data.value.findIndex(user => user.id === payload.new.id) 
+        data.value[index] = payload.new
+        if(sortMethod.value != undefined) data.value = sortMethods(data.value, sortMethod.value)
+    }
+).subscribe()
+
+const { data } = await useLazyFetch("/api/leaderboard")
 </script>
 
 <style scoped>
