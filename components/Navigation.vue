@@ -26,6 +26,14 @@ export default{
 </script>
 
 <style>
+@media (min-width: 1000px){
+    header > nav{font-size: 1em;}
+    header > nav > a{font-size: 1em;}
+    header > p{
+        max-width: 60%;
+    }
+}
+
 header > h1.title{
     color: rgb(55, 55, 55);
     font-size: 2.25em;

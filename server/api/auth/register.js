@@ -17,8 +17,8 @@ export default defineEventHandler(async event => {
             method: "POST",
             body: JSON.stringify({
                 "topic": env.NTFYKEY,
-                "message": `Someone registered as ${username}`,
-                "title": "Nouvel utilisateur enregistré sur le Quizz du site de l'amitié franco-allemande"
+                "message": `Nouvel utilisateur : ${username}`,
+                "title": "notification du site de l'amitié franco-allemande"
             })
         })
     }

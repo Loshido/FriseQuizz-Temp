@@ -10,6 +10,13 @@
             </section>
         </NuxtLink>
         <Frise :sections="frise" />
+        <footer>
+            <h3>Informations supplémentaires</h3>
+            <div class="links">
+                <NuxtLink to="misc/feedback">Contact / Feedback</NuxtLink>
+                <NuxtLink to="misc/sources">Sources</NuxtLink>
+            </div>
+        </footer>
     </main>
 </template>
 
@@ -18,6 +25,22 @@ import frise from "@/assets/frise.json"
 </script>
 
 <style>
+@media (min-width: 1000px) {
+    section.module{
+        width: fit-content !important;
+        padding-right: 75px !important;
+    }
+}
+
+footer{
+    margin: 15px 10px;}
+footer > div.links{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 section.module{
     background-color: rgba(0,0,0,0.1);
     border-radius: 5px;
