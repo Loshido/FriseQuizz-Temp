@@ -39,6 +39,7 @@ const sortMethods = (array, params) => {
 
 const client = useSupabaseClient()
 
+const { data } = await useLazyFetch("/api/leaderboard")
 client.channel('live-leaderboard-updates')
     .on('postgres_changes',
     { event: 'UPDATE', schema: 'public', table: 'Quizz' },
@@ -49,7 +50,6 @@ client.channel('live-leaderboard-updates')
     }
 ).subscribe()
 
-const { data } = await useLazyFetch("/api/leaderboard")
 </script>
 
 <style scoped>
