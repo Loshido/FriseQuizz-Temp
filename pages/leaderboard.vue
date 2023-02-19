@@ -2,7 +2,7 @@
     <main>
         <Navigation titre="Leaderboard" />
         <span v-if="sortMethod != undefined">trie par {{ sortMethod }}.</span>
-        <table v-if="data">
+        <table v-if="!pending">
             <thead>
                 <tr>
                     <th @click="data = sortMethods(data, 'username')" class="username">Pseudo</th>
@@ -16,10 +16,13 @@
                     <td class="username" v-text="user.username" />
                     <td class="pts" v-text="user.points" />
                     <td class="prt" v-text="user.parties" />
-                    <td class="trs" v-text="user.tx_reussite" />
+                    <td class="trs" v-text="`${user.tx_reussite}%`" />
                 </tr>
             </tbody>
         </table>
+        <svg v-else class="spinner" viewBox="0 0 50 50">
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+        </svg>
     </main>
 </template>
 
@@ -36,15 +39,29 @@ const sortMethods = (array, params) => {
     if(params == "username") return array.sort((a, b) => a.username.toLowerCase() < b.username.toLowerCase() ? -1 : 1)
     return array.sort((a, b) => a[params] > b[params] ? -1 : 1)
 }
+
 const client = useSupabaseClient()
-const { data } = await useAsyncData(async () => {
-    const { data, error } = await client.from("Quizz").select()
-    if(error) throw error
-    return data
-})
+
+const { data, pending } = await useLazyFetch("/api/leaderboard")
+client.channel('live-leaderboard-updates')
+    .on('postgres_changes',
+    { event: 'UPDATE', schema: 'public', table: 'Quizz' },
+    (payload) => {
+        const index = data.value.findIndex(user => user.id === payload.new.id) 
+        data.value[index] = payload.new
+        if(sortMethod.value != undefined) data.value = sortMethods(data.value, sortMethod.value)
+    }
+).subscribe()
+
 </script>
 
 <style scoped>
+@media (min-width: 1000px) {
+    main > table{
+        margin: 25px;
+        width: calc(100% - 50px);
+    }
+}
 main > span{
     margin-left: 25px;
     font-weight: 300;

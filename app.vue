@@ -14,8 +14,8 @@ a{text-decoration: none;}
 	font-family: "Inter";}
 
 @media (min-width: 1000px) {
-	main{
+	/* main{
 		margin: 0 30vw;
-	}
+	} */
 }
 </style>

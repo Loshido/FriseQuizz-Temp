@@ -28,6 +28,12 @@
                 <NuxtLink class="redirect" to="/leaderboard">Classement</NuxtLink>
                 <NuxtLink class="redirect" to="/">Accueil</NuxtLink>
             </div>
+            <audio id="success">
+                <source src="@/assets/audio/success.mp3" type="audio/mpeg">
+            </audio>
+            <audio id="error">
+                <source src="@/assets/audio/error.mp3" type="audio/mpeg">
+            </audio>
         </form>
     </main>
     <!-- <svg v-else class="spinner" viewBox="0 0 50 50">
@@ -35,33 +41,53 @@
     </svg> -->
 </template>
 
-<script setup>
-const user = useState("user", () => false)
-const answers = ref(undefined)
-const results = ref({})
-definePageMeta({
-    middleware: ["auth"]
-})
+<script>
+export default {
+    async setup(){
+        const user = useState("user", () => false)
+        const answers = ref(undefined)
+        const results = ref({})
+        const { data } = await useFetch("/api/quizz/questions")
+        definePageMeta({
+            middleware: ["auth"]
+        })
 
-const supabase = useSupabaseClient()
-const { data } = await useFetch('/api/quizz')
-const submit = async () => {
-    answers.value = await useFetch("/api/quizz_answers")
-    const correct = data.value.reduce((total, value) => value.answer == answers.value.data[value.id].answer ? total + 1 : total, 0)
-    results.value.correct = correct
-    const { data: records } = await supabase.from("Quizz").select('*').eq("username", user.value)
-    if(records) {
-        const request = await supabase.from("Quizz").update({
-            parties: records[0].parties + 1,
-            points: records[0].points + correct,
-            tx_reussite: Math.floor(((records[0].points + correct) / ((records[0].parties + 1) * data.value.length)) * 100)
-        }).eq("username", user.value)
-        console.log(request)
-    } 
+        return { user, answers, results, data }
+    },
+    methods: {
+        submit: async function(){
+            this.answers = await useFetch("/api/quizz/answers")
+            const SumFn = (total, value) => value.answer == this.answers.data[value.id].answer ? total + 1 : total
+            const correct = this.data.reduce(SumFn, 0)
+            this.results.correct = correct
+
+            if(correct > this.data.length * 0.5) this.playSuccess()
+            else this.playError()
+
+            if(!useRuntimeConfig().public.LocalNetwork) {
+                await useFetch("/api/auth/update", {
+                    query: {
+                        username: this.user,
+                        length: this.data.length,
+                        correct: correct
+                    }
+                })
+            }
+        },
+        playError(){
+            const node = document.querySelector("form audio#error")
+            node.play()
+        },
+        playSuccess(){
+            const node = document.querySelector("form audio#success")
+            node.play()
+        }
+    }
 }
 </script>
 
 <style scoped>
+button[type="submit"]{cursor: pointer;}
 h2#user{
     color: rgb(77,77,77);
     font-weight: 500;
@@ -145,6 +171,4 @@ form > section p{
     font-size: 1.5em;
     font-weight: 600;}
 pre{margin: 25px;}
-
-
 </style>

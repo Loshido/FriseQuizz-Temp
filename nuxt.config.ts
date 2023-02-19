@@ -5,8 +5,10 @@ export default defineNuxtConfig({
         "@nuxt/devtools"
     ],
     runtimeConfig: {
+        NTFYKEY: "",
+        NTFYFEEDBACK: "",
         public: {
-            NTFYKEY: ""
+            LocalNetwork: false // True pour travailler sans affecter la base de donnée
         }
     },
     css: [
