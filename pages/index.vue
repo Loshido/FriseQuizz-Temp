@@ -1,6 +1,6 @@
 <template>
     <main>
-        <Navigation titre="Bienvenue" description="Vous retrouverez sur cette page, une frise chronologique des événements qui ont contribué à l'<u>amitié</u> entre la France 🇫🇷 et l'Allemagne 🇩🇪" />
+        <Navigation :flag="false" titre="Bienvenue" description="Vous retrouverez sur cette page, une frise chronologique des événements qui ont contribué à l'<u>amitié</u> entre la France 🇫🇷 et l'Allemagne 🇩🇪" />
         <NuxtLink to="/quizz">
             <section id="quizz-button" class="module">
                 <h1>

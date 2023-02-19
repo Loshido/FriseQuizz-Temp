@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
     modules: [
         '@nuxtjs/supabase',
-        "@nuxt/devtools"
+        // "@nuxt/devtools"
     ],
     runtimeConfig: {
         NTFYKEY: "",

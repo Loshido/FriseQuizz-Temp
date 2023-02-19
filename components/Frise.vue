@@ -40,12 +40,13 @@ export default{
     div.frise > div.data{
         width: 100%;
         overflow-y: scroll;
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: repeat(10, 50%);
+        grid-template-rows: 1fr;
         gap: 50px;
     }
     div.frise > div.data > section{
-        max-width: 50%;
+        width: 100%
     }
 }
 

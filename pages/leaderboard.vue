@@ -1,6 +1,6 @@
 <template>
     <main>
-        <Navigation titre="Leaderboard" />
+        <Navigation :flag="true" titre="Leaderboard" />
         <span v-if="sortMethod != undefined">trie par {{ sortMethod }}.</span>
         <table v-if="!pending">
             <thead>
