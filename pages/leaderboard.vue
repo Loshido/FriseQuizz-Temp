@@ -42,8 +42,7 @@ const sortMethods = (array, params) => {
 
 const client = useSupabaseClient()
 
-//const { data, pending } = await client.from("Quizz").select()
-const { data, pending } = await useAsyncData(async () => {
+const { data, pending } = await useLazyAsyncData(async () => {
     const { data, error } = await client.from("Quizz").select()
     if(error) throw error
     return data
