@@ -37,6 +37,7 @@ main{
     height: auto;}
 main > form{
     margin: 0 20px;
+    width: calc(100% - 40px);
     display: flex;
     flex-direction: column;
     gap: 15px;}

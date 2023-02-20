@@ -1,6 +1,6 @@
 <template>
     <main>
-        <Navigation titre="Quizz" />
+        <Navigation :flag="true" titre="Quizz" />
         <form @submit.prevent="submit">
             <div class="entree">
                 <label for="username">Pseudo</label>
