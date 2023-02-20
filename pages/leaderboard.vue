@@ -42,7 +42,12 @@ const sortMethods = (array, params) => {
 
 const client = useSupabaseClient()
 
-const { data, pending } = await useLazyFetch("/api/leaderboard")
+//const { data, pending } = await client.from("Quizz").select()
+const { data, pending } = await useAsyncData(async () => {
+    const { data, error } = await client.from("Quizz").select()
+    if(error) throw error
+    return data
+})
 client.channel('live-leaderboard-updates')
     .on('postgres_changes',
     { event: 'UPDATE', schema: 'public', table: 'Quizz' },
