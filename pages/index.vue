@@ -9,7 +9,46 @@
                 <p>Testez vos connaissances !</p>
             </section>
         </NuxtLink>
-        <Frise :sections="frise" />
+        <Frise>
+            <FriseSection titre="1957 - Union Européene" identifier="1957_ue">
+                <template v-slot:fr>
+                    En 1957, la France et l’Allemagne sont des membres fondateurs et 
+                    deviendront ultérieurement des Etats membres de l’Union Européenne. 
+                    Cette union permet d’assurer  une paix durable suite à la précédente 
+                    guerre à travers l’Europe et favorise également le progrès 
+                    économique et social. La relation entre les deux pays 
+                    s’amplifie donc avec cette position en partageant 
+                    les mêmes valeurs qu'eux . L’Union Européenne se renforcera 
+                    plus tard en 1993 avec le traité de Maastricht qui consiste 
+                    à unifier la monnaie en Europe.
+                </template>
+                <template v-slot:de>
+                    1957 traten Deutschland und Frankreich einer Union bei, die nach 
+                    dem Zweiten Weltkrieg den Weltfrieden aufrechterhielt. 
+                    Diese Union wurde dann zur Europäischen Union, die durch den Vertrag 
+                    von Maastricht von 1993 gestärkt wurde. Diese Beteiligung an dieser 
+                    Union stärkt die Beziehungen zwischen den beiden Ländern.
+                </template>
+            </FriseSection>
+            <FriseSection titre="2019 - Traité de l'Aix la chapelle" identifier="2019">
+                <template v-slot:fr>
+                    Le 22 janvier 2019 Emmanuel Macron et la chancelière Angela Merkel 
+                    signent le traité de coopération franco allemand de l'Aix la chapelle. 
+                    Ce traité instaure un conseil d'experts économiques qui se charge de faire 
+                    des recommandations pour mener une politique économique entre les deux pays. 
+                    L'objectif est d'instaurer une zone économique commune entre la France et 
+                    l'Allemagne avec des règles similaires.
+                </template>
+                <template v-slot:de>
+                    Am 22. Januar 2019 unterzeichneten Emmanuel Macron und Kanzlerin Angela Merkel 
+                    den Aachener Vertrag über die deutsch-französische Zusammenarbeit. Dieser Vertrag 
+                    stellt einen Rat von Wirtschaftsexperten dar, der Empfehlungen für eine 
+                    Wirtschaftspolitik zwischen den beiden Ländern formuliert. Ziel ist es, 
+                    einen gemeinsamen Wirtschaftsraum zwischen Frankreich und Deutschland mit 
+                    identischen Regeln zu schaffen.
+                </template>
+            </FriseSection>
+        </Frise>
         <footer>
             <h3>Informations supplémentaires</h3>
             <div class="links">
@@ -19,10 +58,6 @@
         </footer>
     </main>
 </template>
-
-<script setup>
-import frise from "@/assets/frise.json"
-</script>
 
 <style>
 @media (min-width: 1000px) {

@@ -7,16 +7,17 @@
         </nav>
         <div class="title">
             <h1 class="title" v-text="titre"></h1>
-            <div v-if="flag" class="french_flag">
+            <div v-if="flag" class="french_flag flag">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <div v-if="flag" class="german_flag">
+            <div v-if="flag" class="german_flag flag">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
+            <div v-else class="underline" />
         </div>
         <p v-if="description" v-html="description" />
     </header>
@@ -50,6 +51,13 @@ export default{
         max-width: 60%;
     }
 }
+div.underline{
+    width: 40px;
+    height: 4px;
+    margin-bottom: 10px;
+    border-radius: 1px;
+    background-color: rgba(55, 55, 55, 0.5);
+}
 
 div.title{
     display: flex;
@@ -58,7 +66,7 @@ div.title{
     gap: 10px;
     align-items: flex-end;
     flex-direction: row;}
-div.title > div{
+div.title > div.flag{
     width: 20px;
     height: 10px;}
 

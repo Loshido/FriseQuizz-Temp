@@ -1,38 +1,24 @@
 <template>
     <div class="frise">
         <div class="langue-check">
-            <div @click="fr = (fr && !de) ? fr : !fr" class="fr" :class="fr ? 'active' : ''">🇫🇷</div>
-            <div @click="de = (de && !fr) ? de : !de" class="de" :class="de ? 'active' : ''">🇩🇪</div>
+            <div
+                @click="lang.fr = (lang.fr && !lang.de) ? lang.fr : !lang.fr" class="fr" 
+                :class="lang.fr ? 'active' : ''">🇫🇷</div>
+            <div 
+                @click="lang.de = (lang.de && !lang.fr) ? lang.de : !lang.de" class="de" 
+                :class="lang.de ? 'active' : ''">🇩🇪</div>
         </div>
         <div class="data">
-            <section v-for="section in sections">
-                <a v-text="section.date" />
-                <div>
-                    <span />
-                    <div class="info">
-                        <div class="fr" v-if="fr" v-html="section.paragraph"></div>
-                        <span v-if="de && fr" />
-                        <div class="de" v-if="de" v-html="section.paragraph_de"></div>
-                    </div>
-                </div>
-            </section>
+            <slot/>
         </div>
     </div>
 </template>
 
-<script>
-export default{
-    data: () => ({
-        fr: true,
-        de: false
-    }),
-    props: {
-        sections: {
-            type: Array,
-            required: true
-        }
-    }
-}
+<script setup>
+const lang = useState("lang", () => ({
+    fr: true,
+    de: false
+}))
 </script>
 
 <style>
