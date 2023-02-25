@@ -12,15 +12,23 @@
         <Frise>
             <FriseSection titre="1957 - Union Européene" identifier="1957_ue">
                 <template v-slot:fr>
-                    En 1957, la France et l’Allemagne sont des membres fondateurs et 
-                    deviendront ultérieurement des Etats membres de l’Union Européenne. 
-                    Cette union permet d’assurer  une paix durable suite à la précédente 
-                    guerre à travers l’Europe et favorise également le progrès 
-                    économique et social. La relation entre les deux pays 
-                    s’amplifie donc avec cette position en partageant 
-                    les mêmes valeurs qu'eux . L’Union Européenne se renforcera 
-                    plus tard en 1993 avec le traité de Maastricht qui consiste 
-                    à unifier la monnaie en Europe.
+                    <p>
+                        En 1957, la France et l’Allemagne sont <strong>des membres fondateurs</strong> et 
+                        deviendront ultérieurement des Etats membres de l’Union Européenne. 
+                        Cette union permet d’assurer une <u>paix durable</u> suite à la précédente 
+                        guerre à travers l’Europe et favorise également le progrès 
+                        économique et social. 
+                    </p>
+                    <div class="row">
+                        <p>
+                            La relation entre les deux pays 
+                            s’amplifie donc avec cette position en partageant 
+                            les mêmes valeurs qu'eux . L’Union Européenne se renforcera 
+                            plus tard en 1993 avec <strong> le traité de Maastricht </strong>qui consiste 
+                            à unifier la monnaie en Europe.
+                        </p>
+                        <img src="@/assets/img/maastricht.png" style="width: 100%; max-width: 400px; min-width: 200px;">
+                    </div>
                 </template>
                 <template v-slot:de>
                     1957 traten Deutschland und Frankreich einer Union bei, die nach 
@@ -63,8 +71,11 @@
 @media (min-width: 1000px) {
     section.module{
         width: fit-content !important;
-        padding-right: 75px !important;
-    }
+        padding-right: 75px !important;}
+    div.row{
+        display: flex;
+        flex-direction: row;}
+    section p{text-align: justify;}
 }
 
 footer{
@@ -73,8 +84,8 @@ footer > div.links{
     margin: 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
+    gap: 10px;}
+
 
 section.module{
     background-color: rgba(0,0,0,0.1);

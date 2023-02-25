@@ -23,6 +23,8 @@ const lang = useState("lang", () => ({
 
 <style>
 @media (min-width: 1000px) {
+    div.frise{
+        padding: 25px 15px;}
     div.frise > div.data{
         width: 100%;
         overflow-y: scroll;
@@ -32,14 +34,15 @@ const lang = useState("lang", () => ({
         gap: 50px;
     }
     div.frise > div.data > section{
-        width: 100%
-    }
+        width: 100%}
+    div.frise section > div > div.info{
+        padding: 10px 0 15px 15px !important;}
 }
 
 div.frise{
     width: 100%;
     height: auto;
-    padding: 25px 15px;}
+    padding: 12.5px 7.5px;}
 div.frise section{
     margin-top: 1.25em;
     flex-direction: column;
@@ -64,7 +67,7 @@ div.frise section > div > div.info{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 10px 0 15px 15px;}
+    padding: 5px 0 7.5px 7.5px;}
 div.frise section > div > div.info > span{
     margin: 10px 5%;
     width: 90%;
