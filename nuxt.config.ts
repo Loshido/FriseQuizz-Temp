@@ -2,14 +2,11 @@
 export default defineNuxtConfig({
     modules: [
         '@nuxtjs/supabase',
-        // "@nuxt/devtools"
+        "@nuxt/devtools"
     ],
     runtimeConfig: {
         NTFYKEY: "",
-        NTFYFEEDBACK: "",
-        public: {
-            LocalNetwork: false // True pour travailler sans affecter la base de donnée
-        }
+        NTFYFEEDBACK: ""
     },
     css: [
         "@/assets/spinner.css"

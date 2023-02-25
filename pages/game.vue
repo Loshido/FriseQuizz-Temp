@@ -1,7 +1,7 @@
 <template>
     <main>
         <h2 id="user">Connecté en tant que {{ user }}</h2>
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit" v-if="data">
             <section v-for="section in data" :key="section.id">
                 <h1 class="title" v-text="section.titre" />
                 <p v-html="section.description" />
@@ -47,7 +47,7 @@ export default {
         const user = useState("user", () => false)
         const answers = ref(undefined)
         const results = ref({})
-        const { data } = await useFetch("/api/quizz/questions")
+        const { data } = await useLazyFetch("/api/quizz/questions")
         definePageMeta({
             middleware: ["auth"]
         })
@@ -64,15 +64,14 @@ export default {
             if(correct > this.data.length * 0.5) this.playSuccess()
             else this.playError()
 
-            if(!useRuntimeConfig().public.LocalNetwork) {
-                await useFetch("/api/auth/update", {
-                    query: {
-                        username: this.user,
-                        length: this.data.length,
-                        correct: correct
-                    }
-                })
-            }
+            await useFetch("/api/records/update", {
+                method: "POST",
+                body: {
+                    username: this.user,
+                    length: this.data.length,
+                    correct
+                }
+            })
         },
         playError(){
             const node = document.querySelector("form audio#error")

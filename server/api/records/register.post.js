@@ -3,9 +3,7 @@ import { serverSupabaseClient } from "#supabase/server";
 const env = useRuntimeConfig()
 export default defineEventHandler(async event => {
     const client = serverSupabaseClient(event)
-    const url = new URL("http://localhost:3000" + event.path)
-    const username = url.searchParams.get("username") || ""
-
+    const username = await readBody(event)
     const { error } = await client.from("Quizz").insert({
         username,
         points: 0,

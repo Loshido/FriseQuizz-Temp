@@ -28,18 +28,15 @@ export default{
     methods: {
         submit: async function() {
             const node = document.getElementById("click")
-            const env = useRuntimeConfig()
             const router = useRouter()
             if(this.username == "") return // pas de pseudo 
             if(this.user != false) router.push("/game") // Joueur authentifié
 
-            if(!env.public.LocalNetwork) {
-                await useFetch("/api/auth/register", {
-                    query: {
-                        username: this.username
-                    }
-                })
-            }
+            await useFetch("/api/records/register", {
+                method: "POST",
+                body: this.username
+            })
+
             this.user = this.username
             node.play()
             setTimeout(() => {
@@ -78,6 +75,7 @@ form > div > input{
     font-size: 1.75em;
     color: rgb(55,55,55);}
 form > button[type="submit"]{
+    cursor: pointer;
     margin-top: 25px;
     padding: 15px;
     font-size: 1.75em;
