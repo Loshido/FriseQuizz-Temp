@@ -12,7 +12,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="user in data">
+                <tr 
+                    v-for="user in data" 
+                    :class="{'currentUser': userState === user.username}">
                     <td class="username" v-text="user.username" />
                     <td class="pts" v-text="user.points" />
                     <td class="prt" v-text="user.parties" />
@@ -27,6 +29,7 @@
 </template>
 
 <script setup>
+const userState = useState("user", () => false)
 const methods = {
     username: "ordre alphabetique",
     points: "points",
@@ -66,6 +69,11 @@ client.channel('live-leaderboard-updates')
         width: calc(100% - 50px);
     }
 }
+.currentUser{background-color: rgba(0,0,0,0.1);}
+.currentUser .username::after{
+    content:" (vous)";
+    color: rgba(0,0,0,0.75);
+    font-weight: 700;}
 main > span{
     margin-left: 25px;
     font-weight: 300;

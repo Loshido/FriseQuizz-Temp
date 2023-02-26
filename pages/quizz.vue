@@ -32,7 +32,7 @@ export default{
             if(this.username == "") return // pas de pseudo 
             if(this.user != false) router.push("/game") // Joueur authentifié
 
-            await useFetch("/api/records/register", {
+            await useLazyFetch("/api/records/register", {
                 method: "POST",
                 body: this.username
             })
@@ -41,7 +41,7 @@ export default{
             node.play()
             setTimeout(() => {
                 router.push("/game")
-            }, 2000);
+            }, 1500);
         }
     }
 }
