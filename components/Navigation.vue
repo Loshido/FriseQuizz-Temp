@@ -3,7 +3,7 @@
         <nav>
             <NuxtLink active-class="active" to="/">Frise Chronologique</NuxtLink>
             <NuxtLink active-class="active" to="/quizz">Quizz</NuxtLink>
-            <NuxtLink active-class="active" to="/leaderboard">Leaderboard</NuxtLink>
+            <NuxtLink active-class="active" to="/leaderboard">Classement</NuxtLink>
         </nav>
         <div class="title">
             <h1 class="title" v-text="titre"></h1>

@@ -42,6 +42,7 @@
 <script>
 export default {
     async setup(){
+        const t1 = new Date().getTime()
         const user = useState("user", () => false)
         const answers = ref(undefined)
         const results = ref({})
@@ -50,10 +51,11 @@ export default {
             middleware: ["auth"]
         })
 
-        return { user, answers, results, data }
+        return { user, answers, results, data, t1 }
     },
     methods: {
         submit: async function(){
+            const elapsed = new Date(new Date().getTime() - this.t1).getSeconds()
             this.answers = await useFetch("/api/quizz/answers")
             const SumFn = (total, value) => value.answer == this.answers.data[value.id].answer ? total + 1 : total
             const correct = this.data.reduce(SumFn, 0)
@@ -67,9 +69,11 @@ export default {
                 body: {
                     username: this.user,
                     length: this.data.length,
-                    correct
+                    correct,
+                    elapsed
                 }
             })
+            
         },
         playError(){
             const node = document.querySelector("form audio#error")
