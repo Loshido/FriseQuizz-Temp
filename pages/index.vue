@@ -1,6 +1,6 @@
 <template>
     <main>
-        <Navigation :flag="false" titre="Bienvenue" description="Vous retrouverez sur cette page, une frise chronologique des événements qui ont contribué à l'<u>amitié</u> entre la France 🇫🇷 et l'Allemagne 🇩🇪" />
+        <Navigation :flag="false" titre="Bienvenue" description="Vous retrouverez sur cette page, une frise chronologique des événements qui ont permis l'<u>amitié</u> entre la France 🇫🇷 et l'Allemagne 🇩🇪" />
         <NuxtLink to="/quizz">
             <section id="quizz-button" class="module">
                 <h1>
@@ -10,7 +10,40 @@
             </section>
         </NuxtLink>
         <Frise>
-            <FriseSection titre="1957 - Union Européene" identifier="1957_ue">
+            <FriseSection titre="1963 - Le traité de L'Élysée" identifier="Élysée">
+                <template v-slot:fr>
+                    <p>
+                        A la fin de la Seconde Guerre mondiale, bien que <u>les tensions</u> soient encore latentes entre les deux ennemis, 
+                        plusieurs voix se font entendre pour orchestrer une réconciliation et 
+                        ainsi mettre fin à cette logique de <strong>destruction mutuelle</strong>. 
+                    </p>
+                    <div class="row">
+                        <p>
+                            Enfin, <strong>le général de Gaulle</strong> va rencontrer plusieurs fois <strong>le Chancelier fédéral allemand <u>Konrad Adenauer</u></strong>. 
+                            Progressivement, les deux hommes vont se lier d'amitié. 
+                            Ensemble, ils prennent l'initiative d'<u>une déclaration conjointe visant à sceller la réconciliation 
+                            entre la France et la République Fédérale d'Allemagne</u> mais aussi à renforcer la <u>coopération</u> entre les deux pays. 
+                        </p>
+                        <img src="@/assets/img/de-gaulle-adenauer.png"  style="width: 100%; max-width: 400px; min-width: 200px;">
+                    </div>
+                    <p>
+                        Quelques mois après le <u>22 janvier 1963</u> (la signature du traité), 
+                        L'office franco-allemand pour la jeunesse est créé pour développer les échanges 
+                        entre les jeunes des deux pays. Cette institution existe encore de nos jours; 
+                        elle a permis à 10 millions de jeunes de participer à <strong>des programmes d'échanges</strong>.
+                    </p>
+                </template>
+                <template v-slot:de>
+                    <p>
+                        <strong>Bundeskanzler Konrad Adenauer</strong> und <strong>Präsident Charles de Gaulle</strong> unterzeichneten am <u>22 Januar 1963</u>
+                        <em> der Elysee-Vertrag</em>. Dieser Vertrag gibt Frieden zwischen den beiden Ländern. 
+                        Dazu kommt, dass es die Grundlage für die Kreation <strong>der Europäischen Union</strong> ist. 
+                        Außerdem brechen dieser Vertrag Stereotypen und bringen die Vielfalt der beiden Nachbarländer. 
+                        In der Tat wurden <u>Austauschprogramme</u> zwischen Deutschen und Franzosen gegründet.
+                    </p>
+                </template>
+            </FriseSection>
+            <FriseSection titre="1993 - Le traité de Maastricht" identifier="Maastricht">
                 <template v-slot:fr>
                     <div class="row">
                         <p>
@@ -38,12 +71,12 @@
                     </p>
                 </template>
             </FriseSection>
-            <FriseSection titre="2019 - Traité de l'Aix la chapelle" identifier="2019">
+            <FriseSection titre="2019 - Le traité de l'Aix la chapelle" identifier="Aixlachapelle">
                 <template v-slot:fr>
                     <div class="row">
                     <p>
                         Le 22 janvier 2019 <u>Emmanuel Macron</u> et <u>la chancelière Angela Merkel</u> 
-                        signent <strong>le traité de coopération franco allemand de l'Aix la chapelle</strong>. 
+                        signent <strong>le traité de coopération franco allemand de l'<u>Aix la chapelle</u></strong>. 
                         Ce traité instaure un conseil d'experts économiques qui se charge de faire 
                         des recommandations pour mener une politique économique entre les deux pays. 
                         L'objectif est d'<strong>instaurer une zone économique commune entre la France et 

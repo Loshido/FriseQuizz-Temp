@@ -4,7 +4,10 @@
             <NuxtLink to="/">Accueil</NuxtLink>
         </div>
         <form @submit.prevent="send">
-            <label for="feedback">Laisser un petit mot ?</label>
+            <label for="feedback">
+                <p>Laisser un petit mot ?</p>
+                <a href="mailto:liv.ardoin@stanislas-cannes.com">ou nous contacter par email</a>
+            </label>
             <textarea v-model="message" name="feedback" id="feedback" cols="30" rows="2"></textarea>
             <button type="submit">Envoyer</button>
         </form>
@@ -41,6 +44,8 @@ main > form{
     display: flex;
     flex-direction: column;
     gap: 15px;}
+main > form > label{font-weight: 500;}
+main > form > label a{font-size: 0.95em;}
 main > form > textarea{
     width: 100%;
     padding: .5em;
@@ -61,6 +66,7 @@ main > form > button[type="submit"].success{
 main > div.goback{
     margin: 21px 14px;}
 main > div.goback > a{
+    border: 2px solid rgba(0,0,0, 0.75);
     width: fit-content;
     color: black;
     text-decoration: none;

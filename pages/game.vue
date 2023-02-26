@@ -1,6 +1,6 @@
 <template>
     <main v-if="data">
-        <h2 id="user">Connecté en tant que {{ user }}</h2>
+        <h2 id="user">Connecté(e) en tant que {{ user }}</h2>
         <form @submit.prevent="submit" v-if="data">
             <section v-for="section in data" :key="section.id">
                 <h1 class="title" v-text="section.titre" />
