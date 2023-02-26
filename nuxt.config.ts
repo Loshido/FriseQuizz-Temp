@@ -4,6 +4,9 @@ export default defineNuxtConfig({
         '@nuxtjs/supabase',
         "@nuxt/devtools"
     ],
+    plugins: [
+        {src: "@/plugins/vercel.ts", mode: "client"}
+    ],
     runtimeConfig: {
         NTFYKEY: "",
         NTFYFEEDBACK: ""

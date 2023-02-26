@@ -3,10 +3,12 @@ lockfileVersion: 5.4
 specifiers:
   '@nuxt/devtools': ^0.1.0
   '@nuxtjs/supabase': ^0.3.0
+  '@vercel/analytics': ^0.1.10
   nuxt: ^3.1.0
 
 dependencies:
   '@nuxtjs/supabase': 0.3.0
+  '@vercel/analytics': 0.1.10
 
 devDependencies:
   '@nuxt/devtools': 0.1.0_nuxt@3.1.1
@@ -1562,6 +1564,12 @@ packages:
       hookable: 5.4.2
       vue: 3.2.45
     dev: true
+
+  /@vercel/analytics/0.1.10:
+    resolution: {integrity: sha512-jjJ8GzcPnQp0cMxpfYoUycMRBtDiaIeyVjZPiEPe99Dj1PdjMzAFYEASiV/hpNsXHkpcNYCveDFh6jnmh0YSDQ==}
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dev: false
 
   /@vercel/nft/0.22.6:
     resolution: {integrity: sha512-gTsFnnT4mGxodr4AUlW3/urY+8JKKB452LwF3m477RFUJTAaDmcz2JqFuInzvdybYIeyIv1sSONEJxsxnbQ5JQ==}
