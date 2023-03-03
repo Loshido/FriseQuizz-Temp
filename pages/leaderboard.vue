@@ -18,7 +18,7 @@
                     <td class="username" v-text="user.username" />
                     <td class="pts" v-text="user.points" />
                     <td class="prt" v-text="user.parties" />
-                    <td class="trs" v-text="user.tx_reussite" />
+                    <td class="trs" v-text="`${user.tx_reussite}%`" />
                 </tr>
             </tbody>
         </table>

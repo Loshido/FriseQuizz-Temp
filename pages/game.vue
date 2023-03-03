@@ -11,7 +11,7 @@
                         @click="answers == undefined ? section.answer = reponse.id : null"
                         :class="{
                             'active': section.answer != undefined && section.answer == reponse.id,
-                            'correct': (section.answer != undefined && answers != undefined) && section.answer == answers.data[section.id].answer && section.answer == reponse.id,
+                            'correct': (section.answer != undefined && answers != undefined) && (section.answer == answers.data[section.id].answer && section.answer == reponse.id),
                             'uncorrect': (section.answer != undefined && answers != undefined) && section.answer != answers.data[section.id].answer && section.answer == reponse.id
                         }"
                         v-for="reponse in section.reponses" 

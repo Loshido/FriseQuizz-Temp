@@ -10,6 +10,40 @@
             </section>
         </NuxtLink>
         <Frise>
+            <FriseSection titre="1945 - La 2nd Guerre Mondiale" identifier="2ndGuerreMondiale">
+                <template v-slot:fr>
+                    <p>
+                        La Seconde Guerre mondiale a été un conflit mondial qui a duré de 1939 à 1945. 
+                        Elle a été déclenchée par l'invasion de la Pologne par l'Allemagne nazie et a impliqué la plupart des nations du monde, 
+                        y compris les grandes puissances de l'époque telles que les États-Unis, l'Union soviétique, le Royaume-Uni et la France. 
+                    </p>
+                    <p>
+                        La guerre a vu des millions de personnes mourir, aussi bien sur le champ de bataille que dans les camps de concentration nazis. 
+                        Elle a également vu l'utilisation de technologies avancées de guerre, telles que les bombardements aériens et les armes nucléaires. 
+                        La Seconde Guerre mondiale s'est terminée par la victoire des Alliés, 
+                        menant à la création de l'Organisation des Nations unies pour maintenir la paix et la sécurité internationales. 
+                    </p>
+                    <p>
+                        La guerre a eu des répercussions durables sur le monde, transformant les relations internationales et conduisant à des changements sociaux, 
+                        économiques et politiques à l'échelle mondiale.
+                    </p>
+                </template>
+                <template v-slot:de>
+                    <p>
+                        Der Zweite Weltkrieg war ein globaler Konflikt, der von 1939 bis 1945 dauerte. 
+                        Er wurde durch die Invasion Polens durch das nationalsozialistische Deutschland ausgelöst und umfasste die meisten Nationen der Welt, 
+                        einschließlich der großen Mächte wie den USA, der Sowjetunion, Großbritannien und Frankreich. Der Krieg forderte Millionen von Menschenleben, 
+                        sowohl auf dem Schlachtfeld als auch in Nazi-Konzentrationslagern. 
+                    </p>
+                    <p>
+                        Er war auch von fortschrittlichen Kriegstechnologien wie Luftangriffen und Atomwaffen geprägt. 
+                        Der Zweite Weltkrieg endete mit dem Sieg der Alliierten und führte zur Gründung der Vereinten Nationen, 
+                        veränderte die internationalen Bezie                        um den Frieden und die internationale Sicherheit aufrechtzuerhalten. Der Krieg hatte nachhaltige Auswirkungen auf die Welt, 
+hungen und führte zu sozialen, 
+                        wirtschaftlichen und politischen Veränderungen auf globaler Ebene.
+                    </p>
+                </template>
+            </FriseSection>
             <FriseSection titre="1963 - Le traité de L'Élysée" identifier="Élysée">
                 <template v-slot:fr>
                     <p>

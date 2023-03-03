@@ -52,6 +52,13 @@ export default{
     form > div > input{width: 500px !important;}
 }
 
+div.separator{
+    width: 95%;
+    height: 2px;
+    background-color: rgb(55,55,55);
+    margin: 10px 2.5%;
+}
+
 form{
     background-color: #fff;
     margin-bottom: -10px;
