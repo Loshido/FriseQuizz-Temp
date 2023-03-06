@@ -10,38 +10,51 @@
             </section>
         </NuxtLink>
         <Frise>
-            <FriseSection titre="1945 - La 2nd Guerre Mondiale" identifier="2ndGuerreMondiale">
+            <FriseSection titre="1945 - La Seconde Guerre Mondiale" identifier="2ndGuerreMondiale">
                 <template v-slot:fr>
                     <p>
-                        La Seconde Guerre mondiale a été un conflit mondial qui a duré de 1939 à 1945. 
-                        Elle a été déclenchée par l'invasion de la Pologne par l'Allemagne nazie et a impliqué la plupart des nations du monde, 
-                        y compris les grandes puissances de l'époque telles que les États-Unis, l'Union soviétique, le Royaume-Uni et la France. 
+                        La Seconde Guerre mondiale a été un <strong>conflit mondial</strong> qui a duré de 1939 à 1945. 
+                        Elle a été déclenchée par l'invasion de la Pologne par l'Allemagne nazie et a impliqué <u>la plupart des nations du monde, 
+                        y compris les grandes puissances de l'époque telles que les États-Unis, l'Union soviétique, le Royaume-Uni et la France</u>. 
                     </p>
                     <p>
                         La guerre a vu des millions de personnes mourir, aussi bien sur le champ de bataille que dans les camps de concentration nazis. 
-                        Elle a également vu l'utilisation de technologies avancées de guerre, telles que les bombardements aériens et les armes nucléaires. 
+                        Elle a également vu l'utilisation de <strong>technologies avancées de guerre, telles que les bombardements aériens et les armes nucléaires</strong>. 
                         La Seconde Guerre mondiale s'est terminée par la victoire des Alliés, 
-                        menant à la création de l'Organisation des Nations unies pour maintenir la paix et la sécurité internationales. 
+                        menant à la création de l'<u><strong>Organisation des Nations unies</strong></u> pour maintenir <u>la paix et la sécurité internationales</u>. 
                     </p>
                     <p>
-                        La guerre a eu des répercussions durables sur le monde, transformant les relations internationales et conduisant à des changements sociaux, 
-                        économiques et politiques à l'échelle mondiale.
+                        La guerre a eu des <u>répercussions durables sur le monde</u>, transformant les relations internationales et conduisant à <strong>des changements sociaux, 
+                        économiques et politiques à l'échelle mondiale</strong>.
                     </p>
                 </template>
                 <template v-slot:de>
                     <p>
-                        Der Zweite Weltkrieg war ein globaler Konflikt, der von 1939 bis 1945 dauerte. 
-                        Er wurde durch die Invasion Polens durch das nationalsozialistische Deutschland ausgelöst und umfasste die meisten Nationen der Welt, 
-                        einschließlich der großen Mächte wie den USA, der Sowjetunion, Großbritannien und Frankreich. Der Krieg forderte Millionen von Menschenleben, 
+                        <u>Der Zweite Weltkrieg</u> war ein globaler Konflikt, der von 1939 bis 1945 dauerte. Der Krieg <strong>forderte Millionen von Menschenleben</strong>, 
                         sowohl auf dem Schlachtfeld als auch in Nazi-Konzentrationslagern. 
                     </p>
                     <p>
-                        Er war auch von fortschrittlichen Kriegstechnologien wie Luftangriffen und Atomwaffen geprägt. 
-                        Der Zweite Weltkrieg endete mit dem Sieg der Alliierten und führte zur Gründung der Vereinten Nationen, 
-                        veränderte die internationalen Bezie                        um den Frieden und die internationale Sicherheit aufrechtzuerhalten. Der Krieg hatte nachhaltige Auswirkungen auf die Welt, 
-hungen und führte zu sozialen, 
-                        wirtschaftlichen und politischen Veränderungen auf globaler Ebene.
+                        Der Zweite Weltkrieg endete mit dem Sieg der Alliierten und führte zur <strong>Gründung der Vereinten Nationen</strong>, 
+                        veränderte die internationalen Bezie um <u><strong>den Frieden und die internationale Sicherheit aufrechtzuerhalten</strong></u>.
                     </p>
+                </template>
+            </FriseSection>
+            <FriseSection titre="1951 - La CECA" identifier="ceca">
+                <template v-slot:fr>
+                    La communauté européenne du charbon et de l'acier (CECA) fut fondée le 18 avril 1951. 
+                    C'était une communauté qui réunissait la France, l'Allemagne, la Belgique, l'Italie, le Luxembourg et les Pays-bas. 
+                    Les principaux acteurs furent la France et l'Allemagne. La CECA fut le premier signe de l'amitié franco-allemande. 
+                    En effet, Robert Schuman et Konrad Adenauer furent à l'initiative de cette communauté. 
+                    Ces deux dirigeants avaient à cœur de faire progresser l'amitié franco-allemande. 
+                    Cette communauté d'une importance majeure pour le commerce européen entraîna de nombreuses 
+                    initiatives d'amitiés entre la France et l'Allemagne comme les villes jumelées entre les pays.
+                </template>
+                <template v-slot:de>
+                    Die Europäische Gemeinschaft für Kohle und Stahl (EGKS) ist ein Wirtschaftsverband zwischen Deutschland und Frankreich. 
+                    Nach dem zweiten Weltkrieg waren Kohle und Stahl sehr wichtig für die Ökonomie in Europa, deshalb haben Deutschland und Frankreich EGKS gegründet. 
+                    Der EGKS-Vertrag hat im 18. April 1951 gegründet. Es waren andere Länder in dieser Gemeinschaft wie Belgien, Italien, Luxemburg und die Niederlande, 
+                    aber Deutschland und Frankreich waren die wichtigsten Glieder der EGKS. Die EGKS war die erste Phase für die Deutsch-Französische Freundschaft, 
+                    nämlich dass es Konrad Adenauer und Robert Schuman versöhnt hat. Diese Gemeinschaft hat das Erscheinen der Partnerschaft zwischen Stadt erlaubt.
                 </template>
             </FriseSection>
             <FriseSection titre="1963 - Le traité de L'Élysée" identifier="Élysée">

@@ -1,4 +1,4 @@
-const answers = [
+const answers: Answers = [
     {
         id: 0,
         answer: 1
@@ -26,7 +26,20 @@ const answers = [
     {
         id: 6,
         answer: 1
+    },
+    {
+        id: 7,
+        answer: 1
+    },
+    {
+        id: 8,
+        answer: 1
     }
 ]
+
+type Answers = {
+    id: number,
+    answer: number
+}[]
 
 export default defineEventHandler(() => answers)

@@ -142,6 +142,50 @@ const questions: Questions = [
             },
         ],
         answer: undefined
+    },
+    {
+        id: 7,
+        titre: "Fondation de la CECA",
+        description: "Quand a été fondé la CECA ?",
+        reponses: [
+            {
+                id: 0,
+                value: "1949"
+            },
+            {
+                id: 1,
+                value: "1951"
+            },
+            {
+                id: 2,
+                value: "1953"
+            },
+            {
+                id: 3,
+                value: "1954"
+            }
+        ],
+        answer: undefined
+    },
+    {
+        id: 8,
+        titre: "Les dirigeants de la CECA",
+        description: "Quels furent les dirigeants qui créèrent la CECA ?",
+        reponses: [
+            {
+                id: 0,
+                value: "Charles de Gaulle et Konrad Adenauer"
+            },
+            {
+                id: 1,
+                value: "Robert Schuman et Adenauer"
+            },
+            {
+                id: 2,
+                value: "Ludwig Erhard et Charles de Gaulle"
+            }
+        ],
+        answer: undefined
     }
 ]
 type Question = {
